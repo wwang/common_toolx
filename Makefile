@@ -1,24 +1,20 @@
 CC=gcc
 AR=ar
-CFLAGS=-c -Wall
+CFLAGS=-c -Wall -D__COMMON_TOOLX_DEBUG__ -g
 LDFLAGS= 
 LIBS=
-SOURCES=common_toolx.c test.c simple_hashx.c
+SOURCES=common_toolx.c simple_hashx.c messageQx.c
+INCLUDES=common_toolx.h simple_hashx.h messageQx.h
 OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE=test
 SLIB=libcommontoolx.a
 
 lib:$(SLIB)
 
-all: $(SOURCES) $(EXECUTABLE)
+$(SLIB): $(OBJECTS)
+	$(AR) rcs $(SLIB) $(OBJECTS)
 
-$(SLIB): common_toolx.o simple_hashx.o
-	$(AR) rcs $(SLIB) common_toolx.o simple_hashx.o
-
-$(EXECUTABLE): $(OBJECTS) $(SLIB)
-	$(CC) $(LDFLAGS) $(OBJECTS) -o $@ $(SLIB) $(LIBS)
-
-.c.o:
+%.o: %.c ${INCLUDES}
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:

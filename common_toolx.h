@@ -94,6 +94,13 @@ static __inline__ unsigned long long rdtsc(void)
 }
 #endif
 
+/*
+ * my own boolean type; for non-C99 compile
+ */
+typedef int boolx;
+#define truex 1
+#define falsex 0
+
 #ifdef __cplusplus
 }
 #endif
