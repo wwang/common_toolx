@@ -7,7 +7,9 @@
 #ifndef __MESSAGE_QUEUE_X_H__
 #define __MESSAGE_QUEUE_X_H__
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 /*
  * Create a new message queue.
  *
@@ -113,5 +115,9 @@ int msgqx_close(void *handle);
  *     other:  failed, check errno for reasons
  */
 int msgqx_destroy(const char *name);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
