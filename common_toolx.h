@@ -59,20 +59,27 @@ int parse_mem_size_str(char * mem_size_str, unsigned long long * mem_size);
  * Compilation time controlled debug output
  */
 #ifdef __COMMON_TOOLX_DEBUG__
-#define CTX_DPRINTF(fmt, ...)			\
-	do { fprintf(stderr, fmt ,			\
+#define CTX_DPRINTF(fmt, ...)				\
+	do { fprintf(stderr, "%s: "fmt , __func__,	\
 		     ## __VA_ARGS__);} while (0);
 #else
 #define CTX_DPRINTF(fmt, ...)			\
 	do {} while(0);
 #endif
-
+	
 /*
  * Execution time controlled debug output
  */
 #define ctx_dprintf(debug,fmt, ...)					\
-	do { if(debug) {fprintf(stderr, fmt ,	\
-			       ## __VA_ARGS__);}} while (0);
+	do { if(debug) {fprintf(stderr, "%s: "fmt , __func__,		\
+				## __VA_ARGS__);}} while (0);
+
+/* 
+ * Error reporting
+ */
+#define CTX_LOGERR(fmt, ...)				\
+	do { fprintf(stderr, "%s: "fmt , __func__,	\
+		     ## __VA_ARGS__);} while (0);
 
 
 /* 
