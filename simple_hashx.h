@@ -71,6 +71,46 @@ int get_val_simple_hashx(void * hash_table,
 			 long long * int_val,
 			 void** pointer);
 
+/* 
+ * Remove a value from the hash table based on its key.
+ *
+ * Input parameters:
+ *       hash_table: handle to the hash table
+ *       key: the key of this value
+ * Return value:
+ *       0: success
+ *       1: fail, hash_table is NULL
+ *       2: fail, no record for current key
+ */
+
+int remove_val_simple_hashx(void * hash_table,
+			 long long key);
+
+/*
+ * Get the first or next value from the hash table. These functions are used for
+ * enumerate all items in the table.
+ * Input parameters:
+ *       hash_table: handle to the hash table
+ *       val_sel: indicating whether the value is a long long int (0) or
+ *                a pointer (1)
+ *       search_handle: a handle for keeping track of the enumeration, if
+ *                      *search_handle is NULL, the first item is returned
+ * Output parameters:
+ *       search_handle: a handle for keeping track of the enumeration, if 
+ *                      *search_handle is NULL, no more items to enumerate 
+ *       int_val: value in the form of long long int
+ *       pointer: value in the form of a pointer. Users are responsible for
+ *                freeing the memory associated with this pointer.
+ * Return value:
+ *       0: success
+ *       1: wrong parameters
+ */
+int get_next_simple_hashx(void *hash_table, 
+			  int val_sel, 
+			  void **search_handle, 
+			  long long *int_val,
+			  void **pointer);
+	
 /*
  * Cleanup the hash table, and free associated memory
  * 

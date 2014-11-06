@@ -8,9 +8,9 @@
 #ifndef __COMMON_TOOLX_STATIC_LINKED_LISTX_H__
 #define __COMMON_TOOLX_STATIC_LINKED_LISTX_H__
 
-/* #ifdef __cplusplus */
-/* extern "C" { */
-/* #endif  */
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 struct sllst_pointer{
 	int has_data; // whether this slot has data
@@ -96,8 +96,8 @@ int static_linked_listx_get_next(void *list,
  */
 int static_linked_listx_free(void *list);
 	
-/* #ifdef __cplusplus */
-/* } */
-/* #endif */
+#ifdef __cplusplus
+}
+#endif
 
 #endif 
