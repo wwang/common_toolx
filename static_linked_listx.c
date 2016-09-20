@@ -116,9 +116,9 @@ int static_linked_listx_increase(struct static_linked_listx *list)
 	new_pointers = (char*)list->pointers + 
 		(list->size - STATIC_LINKED_LISTX_CHUNK_SIZE) * 
 		sizeof(struct sllst_pointer);
-	memset(new_items, STATIC_LINKED_LISTX_CHUNK_SIZE * list->item_size, 0);
-	memset(new_pointers, STATIC_LINKED_LISTX_CHUNK_SIZE * 
-	       sizeof(struct sllst_pointer), 0);
+	memset(new_items, 0, STATIC_LINKED_LISTX_CHUNK_SIZE * list->item_size);
+	memset(new_pointers, 0, STATIC_LINKED_LISTX_CHUNK_SIZE * 
+	       sizeof(struct sllst_pointer));
 	
 	
 	/*
